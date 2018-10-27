@@ -1,3 +1,11 @@
 .center-text {
     text-align: center;
 }
+
+.justify-center {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
