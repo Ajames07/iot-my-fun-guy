@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import '../../styles/main.css';
 
 class LoginPage extends Component {
   state = {
@@ -40,47 +43,48 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} className="center-text">
           <h1>Login</h1>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
+              <TextField
+                label="Username"
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
+              <TextField
+                label="Password"
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <input
+            <Button
+              variant="contained"
+              color="primary"
               className="log-in"
               type="submit"
               name="submit"
               value="Log In"
-            />
+            >Submit</Button>
           </div>
         </form>
         <center>
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
             Register
-          </button>
+          </Button>
         </center>
       </div>
     );
