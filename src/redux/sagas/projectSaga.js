@@ -29,10 +29,12 @@ function* getPreviousProjects() {
 //function to get single projects details to display on drawer
 function* getProjectDetails(action) {
 
-    const projectId = action.payload
+    const projectId = action.payload;
+    console.log('in getProjectDetails', projectId);
 
     try{
         const singleProjectDetails = yield call(axios.get, 'api/project/details/' + projectId);
+        yield put({type: 'SET_PROJECT_DETAILS', payload: singleProjectDetails.data});
     }
     catch (error) {
         console.log('ERROR', error);
