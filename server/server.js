@@ -12,7 +12,6 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const sensorDataForm = require('./routes/sensor.router');
-const notesRouter = require('./routes/notes.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,7 +27,6 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/sensor', sensorDataForm);
-app.use('/api/notes', notesRouter);
 // Serve static files
 app.use(express.static('build'));
 
@@ -36,7 +34,7 @@ app.use(express.static('build'));
 app.use(express.static('build'));
 
 //device connection
-// Make a request for data every 30 minutes
+// Make a request for data every 1 minute
 cron.schedule('*/1 * * * *', function () {
   console.log('running a task every 1 minutes');
   particleData();
@@ -55,7 +53,8 @@ function particleData() {
     Values ($1,$2)`;
     pool.query(queryText, [newSensorData.temp, newSensorData.humidity])
       .then((results) => {
-      }).catch((error) => {
+      })//error handling
+      .catch((error) => {
         console.log('error making POST request', error);
       });
   })//error handling
