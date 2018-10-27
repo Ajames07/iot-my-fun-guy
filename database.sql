@@ -18,12 +18,13 @@ CREATE TABLE projects (
 CREATE TABLE images (
     id SERIAL PRIMARY KEY,
     projects_id INT REFERENCES projects,
-    image_path VARCHAR (5000)
+    image_path VARCHAR (5000),
+    date_uploaded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE devices (
     id SERIAL PRIMARY KEY,
     particle_id VARCHAR (10),
-    token VARCHAR (10),
+    token VARCHAR (10)
 );
 CREATE TABLE readings (
     id SERIAL PRIMARY KEY,
