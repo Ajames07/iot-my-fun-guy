@@ -4,7 +4,6 @@ import '../../styles/main.css';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux';
-import { InputLabel } from '@material-ui/core';
 
 class NewProjectPage extends Component {
 
@@ -50,7 +49,9 @@ class NewProjectPage extends Component {
                             <TextField label="Location" value={this.state.location} onChange={this.handleChange} name="location"/>
                             <br />
                             <TextField type="date" value={this.state.date} onChange={this.handleChange} name="date"/>
-                            <Button variant="contained" color="primary" type="submit" style={{marginTop: '50px'}}>Add Project</Button>
+                            <Button variant="contained" color="primary" style={{marginTop: '25px'}}>Add an Image</Button>
+                            <br />
+                            <Button variant="contained" color="primary" type="submit" style={{marginTop: '25px'}}>Add Project</Button>
                         </form>
                     </Paper>
                     <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
