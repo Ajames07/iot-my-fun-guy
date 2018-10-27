@@ -11,14 +11,14 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants';
 
 
 
 const styles = {
   list: {
     width: 250,
+    background: 'transparent',
   },
   fullList: {
     width: 'auto',
@@ -45,7 +45,7 @@ class Nav extends Component {
     const { classes } = this.props;
     
     const sideList = (
-      <div className="nav-link-list">
+      <div className="nav-link-list" style={{background: 'transparent'}}>
         {/* <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
@@ -63,12 +63,43 @@ class Nav extends Component {
             </ListItem>
           ))}
         </List> */}
+        <div class="nav-close">
+          <p>CLOSE</p>
+        </div>
         <Link className="nav-link" to="/home">
          {/* Show this link if they are logged in or not,
          but call this link 'Home' if they are logged in,
          and call this link 'Login / Register' if they are not */}
          {this.props.user.id ? 'Home' : 'Login / Register'}
         </Link>
+        {/* Show the link to the profile page and the logout button if the user is logged in */}
+        {this.props.user.id && (
+          <>
+            <Link className="nav-link" to="/profile">
+              Profile
+           </Link>
+          </>
+        )}
+        {/* Show the link to the current projects page and the logout button if the user is logged in */}
+        {this.props.user.id && (
+          <>
+            <Link className="nav-link" to="/current">
+              Current 
+           </Link>
+          </>
+        )}
+        {/* Show the link to the previous projects page and the logout button if the user is logged in */}
+        {this.props.user.id && (
+          <>
+            <Link className="nav-link" to="/previous">
+              Previous
+           </Link>
+          </>
+        )}
+        {/* Always show this link since the about page is not protected */}
+        <Link className="nav-link" to="/about">
+          About
+       </Link>
         {/* Show the link to the info page and the logout button if the user is logged in */}
        {this.props.user.id && (
          <>
@@ -78,10 +109,7 @@ class Nav extends Component {
            <LogOutButton className="nav-link"/>
          </>
        )}
-       {/* Always show this link since the about page is not protected */}
-       <Link className="nav-link" to="/about">
-         About
-       </Link>
+      
 
       </div>
     );
