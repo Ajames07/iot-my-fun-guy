@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const sensorData = [];
 
-//takes in data from senors
+//stores data from sensors
 const SensorDataList = (state = sensorData, action) => {
     switch (action.type) {
       case 'FETCH_DATA' :
