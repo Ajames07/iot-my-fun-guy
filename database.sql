@@ -6,7 +6,6 @@ CREATE TABLE person (
 CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     person_id INT REFERENCES person,
-    devices_id INT REFERENCES devices,
     project_name VARCHAR (500),
     project_location VARCHAR (500),
     date_started TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -21,16 +20,10 @@ CREATE TABLE images (
     image_path VARCHAR (5000),
     date_uploaded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TABLE devices (
-    id SERIAL PRIMARY KEY,
-    particle_id VARCHAR (10),
-    token VARCHAR (10)
-);
 CREATE TABLE readings (
     id SERIAL PRIMARY KEY,
-    device_id INT REFERENCES devices,
+    projects_id INT REFERENCES projects,
     temperature VARCHAR (5),
     humidity VARCHAR (4),
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
