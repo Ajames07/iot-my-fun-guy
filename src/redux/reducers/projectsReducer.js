@@ -18,6 +18,8 @@ const previousProjects = (state = [], action) => {
     }
 }
 
+
+
 export default combineReducers({
     currentProjects,
     previousProjects,
