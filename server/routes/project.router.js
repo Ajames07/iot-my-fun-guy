@@ -33,4 +33,23 @@ router.post('/add', (req, res) => {
     });
 });
 
+
+//route to get single projects details
+router.get('/details/:id', (req, res) => {
+    const projectId = parseInt(req.params.id);
+    
+    console.log('projectId', projectId);
+    
+    const query = `SELECT * FROM projects WHERE "id" = $1;`;
+
+    pool.query(query, [projectId])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error getting project details', error);
+            res.sendStatus(500);
+        });
+
+});
+
 module.exports = router;

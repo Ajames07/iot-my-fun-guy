@@ -30,13 +30,15 @@ const styles = {
 
 
 const mapStateToProps = state => ({
-    projects: state.projects.currentProjects
+    projects: state.projects.currentProjects,
+    projectDetails: state.projectDetails.singleProject,
 });
 
 class CurrentProjects extends Component {
 
     state = {
         left: false,
+        secondLeft: false,
     };
 
     toggleDrawer = (side, open) => () => {
@@ -44,6 +46,28 @@ class CurrentProjects extends Component {
             [side]: open,
         });
     };
+
+    toggleSecondDrawer = (open) => () => {
+        this.setState({
+            secondLeft: open,
+        })
+    }
+
+    getProjectDetails = (projectId) => {
+       
+        console.log('in getProjectDetails', projectId);
+
+        const action = {type: 'GET_PROJECT_DETAILS', payload: projectId};
+    
+        this.props.dispatch(action);
+
+        if(this.props.projectDetails.length > 0){
+            this.setState({
+                left: true,
+            });
+        };
+        
+    }
 
     componentDidMount() {
         this.props.dispatch({ type: 'GET_ALL_CURRENT_PROJECTS' });
@@ -57,11 +81,46 @@ class CurrentProjects extends Component {
 
         const { classes } = this.props;
 
-        const projectDetails = (
-            <div className={classes.projectDetails}>
-                <h2>Project Details</h2>
-            </div>
-        );
+        let singleProjectDetails = null;
+        
+        if(this.props.projectDetails.length > 0){
+
+            const details = this.props.projectDetails[0];
+
+            singleProjectDetails = (
+                <MuiThemeProvider theme={theme}>
+                    <div className={classes.projectDetails}>
+                        <h2>Project Details</h2>
+                        <h4>{details.project_name}</h4>
+                        <Button variant="contained" color="primary" onClick={this.toggleSecondDrawer(true)}>Notes</Button>
+                        <SwipeableDrawer
+                            anchor="left"
+                            open={this.state.secondLeft}
+                            onClose={this.toggleSecondDrawer(false)}
+                            onOpen={this.toggleSecondDrawer(true)}
+                            className={classes.projectDetails}
+                        >
+                            <div
+                                tabIndex={0}
+                                role="button"
+                                onClick={this.toggleSecondDrawer(false)}
+                                onKeyDown={this.toggleSecondDrawer(false)}
+                            >
+                                <p>Close</p>
+                            </div>
+                            <div className={classes.projectDetails}>
+                                <h2>Notes</h2>
+                                <div className="notesContainer">
+
+                                </div>
+                            </div>
+
+                        </SwipeableDrawer>
+                    </div>
+                </MuiThemeProvider>
+               
+            );
+        }
 
         if (this.props.projects) {
             return (
@@ -72,7 +131,7 @@ class CurrentProjects extends Component {
                             <div className="projectContainer">
                                 {this.props.projects.map((project, i) => {
                                     return (
-                                        <div key={i} onClick={this.toggleDrawer('left', true)} name={this.props.projects.id}>
+                                        <div key={i} onClick={() => this.getProjectDetails(project.id)} >
                                             <Paper style={{ width: '40vw' }} className="center-text">
                                                 <div className="center-text">
                                                     <h3 style={{ marginTop: '16px' }}>{project.project_name}</h3>
@@ -100,7 +159,7 @@ class CurrentProjects extends Component {
                                     >
                                         <p>Close</p>   
                                     </div>
-                                    {projectDetails}
+                                    {singleProjectDetails}
                                 </SwipeableDrawer>
                             </div>
                           
