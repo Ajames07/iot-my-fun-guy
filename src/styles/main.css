@@ -10,3 +10,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.projectContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

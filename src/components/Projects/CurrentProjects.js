@@ -3,64 +3,75 @@ import Button from '@material-ui/core/Button';
 import '../../styles/main.css';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import moment from "moment";
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+    },
+    palette: {
+        primary: {
+            main: '#ad0400'
+        },
+    }
+});
+
+const mapStateToProps = state => ({
+    projects: state.projects.currentProjects
+});
 
 class MainPage extends Component {
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_ALL_CURRENT_PROJECTS' });
+    }
 
     toMainPage = () => {
         this.props.history.push('/home');
     }
 
     render() {
-        return (
-            <div>
-                <div className="justify-center">
+        if (this.props.projects) {
+            return (
+                <MuiThemeProvider theme={theme}>
+                    <div>
+                        <div className="justify-center">
+                            <h2>Current Projects</h2>
+                            {this.props.projects.map((project, i) => {
+                                return (
+                                    <div key={i}>
+                                        <Paper style={{ width: '40vw' }} className="center-text">
+                                            <div className="center-text">
+                                                <h3 style={{ marginTop: '16px' }}>{project.project_name}</h3>
+                                            </div>
+                                            <span>Temp: </span><br />
+                                            <span>Location: {project.project_location}</span><br />
+                                            <span>Date Started: {moment(project.date_started).format('YYYY-MM-DD')}</span>
+                                        </Paper>
+                                        <br />
+                                    </div>
+                                )
+                            })}
 
-                    <h2>Current Projects</h2>
-                    <Paper style={{ width: '40vh' }}>
-                        <Grid container>
-                            <Grid item md={6}>
-                                <h4 style={{ marginTop: '16px' }}>Project name</h4>
-                                <img alt="project" />
-                            </Grid>
-                            <Grid item md={6}>
-                                <p>Temp Data</p>
-                                <p>Location: basement</p>
-                                <p>Date Started</p>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                    <Paper style={{ width: '40vh' }}>
-                        <Grid container>
-                            <Grid item md={6}>
-                                <h4 style={{ marginTop: '16px' }}>Project name</h4>
-                                <img alt="project" />
-                            </Grid>
-                            <Grid item md={6}>
-                                <p>Temp Data</p>
-                                <p>Location: basement</p>
-                                <p>Date Started</p>
-                            </Grid>
-                        </Grid>
-                    </Paper><Paper style={{ width: '40vh' }}>
-                        <Grid container>
-                            <Grid item md={6}>
-                                <h4 style={{ marginTop: '16px' }}>Project name</h4>
-                                <img alt="project" />
-                            </Grid>
-                            <Grid item md={6}>
-                                <p>Temp Data</p>
-                                <p>Location: basement</p>
-                                <p>Date Started</p>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                    <br />
-                    <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
-                </div>
-            </div>
-        );
+                            <br />
+                            <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
+                        </div>
+                    </div>
+                </MuiThemeProvider>
+                
+            );
+        }
+        else {
+            return (
+                <div>Loading...</div>
+            )
+        }
+
     }
 }
 
 
-export default MainPage;
+export default connect(mapStateToProps)(MainPage);

@@ -38,13 +38,13 @@ app.use(express.static('build'));
 
 //device connection
 // Make a request for data every 1 minute
-cron.schedule('*/1 * * * *', function () {
-  console.log('running a task every 1 minutes');
-  particleData();
-});//end cron.schedule
+// cron.schedule('*/1 * * * *', function () {
+//   console.log('running a task every 1 minutes');
+//   particleData();
+// });//end cron.schedule
 
 //run the server once when the device boots up
-particleData();
+// particleData();
 
 function particleData() {
   axios.get(`https://api.spark.io/v1/devices/${process.env.DEVICE_ID}/result?access_token=${process.env.TOKEN}`).then(function (response) {
