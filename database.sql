@@ -5,7 +5,7 @@ CREATE TABLE person (
     notes VARCHAR (10000)
 );
 
-CREATE TABLE device (
+CREATE TABLE devices (
     id SERIAL PRIMARY KEY,
     person_id INT REFERENCES person,
     particle_id VARCHAR (10),
@@ -17,14 +17,14 @@ CREATE TABLE readings (
     device_id INT REFERENCES devices,
     temperature VARCHAR (5),
     humidity VARCHAR (4),
-    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE alerts (
     id SERIAL PRIMARY KEY,
     temperature_alert VARCHAR (5),
     humidity_alert VARCHAR (4),
-    date TIMESTAMP NOT NULL CURRENT_TIMESTAMP,
-    device_id INT REFERENCES device
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    device_id INT REFERENCES devices
 );
 CREATE TABLE notes (
     id SERIAL PRIMARY KEY,
