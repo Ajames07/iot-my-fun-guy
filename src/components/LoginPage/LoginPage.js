@@ -3,6 +3,18 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import '../../styles/main.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+    },
+    palette: {
+        primary: {
+            main: '#ad0400'
+        },
+    }
+});
 
 class LoginPage extends Component {
   state = {
@@ -34,18 +46,20 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.loginMessage}
-          </h2>
-        )}
-        <form onSubmit={this.login} className="center-text">
-          <h1>Login</h1>
-          <div>
+      <MuiThemeProvider theme={theme}>
+
+        <div>
+          {this.props.errors.loginMessage && (
+            <h2
+              className="alert"
+              role="alert"
+            >
+              {this.props.errors.loginMessage}
+            </h2>
+          )}
+          <form onSubmit={this.login} className="center-text login-form">
+            <h1>Login</h1>
+            <div>
               <TextField
                 label="Username"
                 type="text"
@@ -53,8 +67,8 @@ class LoginPage extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-          </div>
-          <div>
+            </div>
+            <div>
               <TextField
                 label="Password"
                 type="password"
@@ -62,31 +76,31 @@ class LoginPage extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-          </div>
+            </div>
+            <br />
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                className="link-button"
+                type="submit"
+              >Log In</Button>
+            </div>
+          </form>
           <br />
-          <div>
+          <center>
             <Button
               variant="contained"
               color="primary"
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            >Submit</Button>
-          </div>
-        </form>
-        <center>
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Register
+              type="button"
+              className="link-button"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
+            >
+              Register
           </Button>
-        </center>
-      </div>
+          </center>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

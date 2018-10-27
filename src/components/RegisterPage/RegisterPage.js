@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+    },
+    palette: {
+        primary: {
+            main: '#ad0400'
+        },
+    }
+});
 
 class RegisterPage extends Component {
   state = {
@@ -33,59 +45,62 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.errors.registrationMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.registrationMessage}
-          </h2>
-        )}
-        <form onSubmit={this.registerUser} className="center-text">
-          <h1>Register User</h1>
-          <div>
-            <TextField
-              label="Username"
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </div>
-          <div>
-            <TextField
-              label="Password"
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </div>
+      <MuiThemeProvider theme={theme}>
+        <div>
+          {this.props.errors.registrationMessage && (
+            <h2
+              className="alert"
+              role="alert"
+            >
+              {this.props.errors.registrationMessage}
+            </h2>
+          )}
+          <form onSubmit={this.registerUser} className="center-text">
+            <h1>Register User</h1>
+            <div>
+              <TextField
+                label="Username"
+                type="text"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChangeFor('username')}
+              />
+            </div>
+            <div>
+              <TextField
+                label="Password"
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
+              />
+            </div>
+            <br />
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                className="link-button"
+                type="submit"
+                name="submit"
+                value="Register"
+              >Register</Button>
+            </div>
+          </form>
           <br />
-          <div>
+          <center>
             <Button
               variant="contained"
               color="primary"
-              className="register"
-              type="submit"
-              name="submit"
-              value="Register"
-            >Register</Button>
-          </div>
-        </form>
-        <center>
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            className="link-button"
-            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
-          >
-            Login
+              type="button"
+              className="link-button"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
+            >
+              Login
           </Button>
-        </center>
-      </div>
+          </center>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
