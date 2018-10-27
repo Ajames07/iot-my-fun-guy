@@ -97,7 +97,7 @@ sensorDataDelete = (sensor) => {
                             <TableRow key={i}>
                                 <TableCell>{sensor.temperature}F</TableCell>
                                 <TableCell>{sensor.humidity}%</TableCell>
-                                <TableCell></TableCell>
+                                <TableCell>{moment(sensor.date).format('YYYY-MM-DD')}</TableCell>
                                 <TableCell><Button  variant="outlined" color="primary" size="small" onClick={this.sensorEdit(sensor)}>Edit</Button></TableCell>
                                 <TableCell><Button  variant="outlined" color="secondary" size="small" onClick={() => this.sensorDataDelete(sensor.id)}>Delete</Button></TableCell>
                             </TableRow>
