@@ -1,0 +1,13 @@
+.aboutPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutPage p {
+    width: 80vw;
+    font-size: 25px;
+    color: #fff;
+    background: #ad0400;
+    padding: 10px;
+}
