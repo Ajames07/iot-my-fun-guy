@@ -11,6 +11,11 @@ CREATE TABLE projects (
     notes VARCHAR (10000),
     yield VARCHAR (6)
 );
+CREATE TABLE images (
+    id SERIAL PRIMARY KEY,
+    projects_id INT REFERENCES projects,
+    image_path VARCHAR (5000)
+);
 CREATE TABLE devices (
     id SERIAL PRIMARY KEY,
     particle_id VARCHAR (10),
