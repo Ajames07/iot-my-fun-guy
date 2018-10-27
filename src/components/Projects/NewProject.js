@@ -3,8 +3,7 @@ import Button from '@material-ui/core/Button';
 import '../../styles/main.css';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import {connect} from 'react-redux';
-
+import { connect } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -32,7 +31,7 @@ class NewProjectPage extends Component {
 
     submitProject = (event) => {
         event.preventDefault();
-        this.props.dispatch({type: 'ADD_PROJECT', payload: this.state});
+        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state });
         this.setState({
             name: '',
             location: '',
@@ -59,16 +58,16 @@ class NewProjectPage extends Component {
                     <div className="justify-center">
                         <Paper style={{ width: '50vh' }}>
                             <h2 className="center-text">Add a Project</h2>
-                            <form className="center-text" style={{ width: '35vh' }} onSubmit={this.submitProject}>
+                            <form className="center-text" onSubmit={this.submitProject}>
                                 <TextField label="Project Name" value={this.state.name} onChange={this.handleChange} name="name" />
                                 <TextField label="Location" value={this.state.location} onChange={this.handleChange} name="location" />
                                 <br />
                                 <TextField type="date" value={this.state.date} onChange={this.handleChange} name="date" />
-                                <Button variant="contained" color="primary" style={{ marginTop: '25px' }}>Add an Image</Button>
                                 <br />
-                                <Button variant="contained" color="primary" type="submit" style={{ marginTop: '25px' }}>Add Project</Button>
+                                <Button variant="contained" color="primary" type="submit" style={{ margin: '25px' }}>Submit</Button>
                             </form>
                         </Paper>
+                        <br />
                         <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
                     </div>
                 </div>
