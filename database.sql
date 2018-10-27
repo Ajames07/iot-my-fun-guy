@@ -25,5 +25,7 @@ CREATE TABLE readings (
     projects_id INT REFERENCES projects,
     temperature VARCHAR (5),
     humidity VARCHAR (4),
+    voc VARCHAR (500),
+    lux VARCHAR (500),
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
