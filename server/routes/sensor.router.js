@@ -26,20 +26,20 @@ router.get('/:id', ( req , res ) => {
 });//end router GET
 
 // manulally entered readings data POST to server
-router.post('/', ( req , res ) => {
-    console.log(req.body);
-    const newSensorData = req.body;
-    const queryText =`INSERT INTO readings ("temperature","humidity","voc")
-                        Values ($1,$2)`;
-    pool.query(queryText, [newSensorData.temperature,newSensorData.humidity,newSensorData.voc])
-    .then((results) => {
-       res.sendStatus(200);
-    })//error handling
-    .catch((error) => {
-        console.log('error making POST request', error);
-        res.sendStatus(500);
-    });//end error handling
-});//end router.post
+// router.post('/', ( req , res ) => {
+//     console.log(req.body);
+//     const newSensorData = req.body;
+//     const queryText =`INSERT INTO readings ("projects_id","temperature","humidity","voc")
+//                         Values ($1,$2,$3,$4)`;
+//     pool.query(queryText, [newSensorData.projects_id,newSensorData.temperature,newSensorData.humidity,newSensorData.voc])
+//     .then((results) => {
+//        res.sendStatus(200);
+//     })//error handling
+//     .catch((error) => {
+//         console.log('error making POST request', error);
+//         res.sendStatus(500);
+//     });//end error handling
+// });//end router.post
 
 // edit data stored in server PUT route
 router.put('/:id', ( req , res ) => {
@@ -48,7 +48,7 @@ router.put('/:id', ( req , res ) => {
     SET "temperature" = $1,
     "humidity" = $2,
     "voc" = $3
-    WHERE id = $3;`;
+    WHERE id = $4;`;
 
     const queryValues = [
         updatedSensorData.temperature,

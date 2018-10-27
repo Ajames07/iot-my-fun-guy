@@ -37,14 +37,14 @@ app.use(express.static('build'));
 app.use(express.static('build'));
 
 //device connection
-// Make a request for data every 1 minute
-// cron.schedule('*/1 * * * *', function () {
-//   console.log('running a task every 1 minutes');
-//   particleData();
-// });//end cron.schedule
+//Make a request for data every 1 minute
+cron.schedule('*/1 * * * *', function () {
+  console.log('running a task every 1 minutes');
+  particleData();
+});//end cron.schedule
 
 //run the server once when the device boots up
-// particleData();
+particleData();
 
 function particleData() {
   axios.get(`https://api.spark.io/v1/devices/${process.env.DEVICE_ID}/result?access_token=${process.env.TOKEN}`).then(function (response) {
@@ -52,9 +52,9 @@ function particleData() {
     const newSensorData = JSON.parse(response.data.result);
     console.log(newSensorData);
     // INSERT INTO using a pg pool
-    const queryText = `INSERT INTO readings ("temperature","humidity","voc")
-    Values ($1,$2,$3)`;
-    pool.query(queryText, [newSensorData.temp, newSensorData.humidity, newSensorData.voc])
+    const queryText = `INSERT INTO readings ("projects_id",temperature","humidity","voc")
+    Values ($1,$2,$3,$4)`;
+    pool.query(queryText, [newSensorData.projects_id,newSensorData.temp, newSensorData.humidity, newSensorData.voc])
       .then((results) => {
       })//error handling
       .catch((error) => {
