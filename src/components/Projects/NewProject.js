@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import '../../styles/main.css';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import {connect} from 'react-redux';
 
 class MainPage extends Component {
 
@@ -17,8 +18,13 @@ class MainPage extends Component {
 
     submitProject = (event) => {
         event.preventDefault();
-        console.log('Submit');
-        
+        this.props.dispatch({type: 'ADD_PROJECT', payload: this.state});
+        this.setState({
+            name: '',
+            location: '',
+            date: '',
+        });
+        alert('The project gas been added');
     }
 
     toMainPage = () => {
@@ -53,4 +59,4 @@ class MainPage extends Component {
 }
 
 
-export default MainPage;
+export default connect()(MainPage);
