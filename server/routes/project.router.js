@@ -3,7 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.post('/add', (req, res) => {
-    console.log('got to the server with:', req.body);
-})
+    const query = `INSERT INTO "project" ("person_id", "devices_id", "project_name", "project_location", "date_started")
+                    VALUES ($1, $2, $3, $4, $5, $6);`;
+    res.send(201);
+});
 
 module.exports = router;

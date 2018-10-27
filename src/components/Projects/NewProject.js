@@ -4,8 +4,9 @@ import '../../styles/main.css';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux';
+import { InputLabel } from '@material-ui/core';
 
-class MainPage extends Component {
+class NewProjectPage extends Component {
 
     constructor() {
         super();
@@ -24,7 +25,7 @@ class MainPage extends Component {
             location: '',
             date: '',
         });
-        alert('The project gas been added');
+        alert('The project has been added');
     }
 
     toMainPage = () => {
@@ -47,7 +48,8 @@ class MainPage extends Component {
                         <form className="center-text" style={{width: '35vh'}} onSubmit={this.submitProject}>
                             <TextField label="Project Name" value={this.state.name} onChange={this.handleChange} name="name"/>
                             <TextField label="Location" value={this.state.location} onChange={this.handleChange} name="location"/>
-                            <TextField label="Date Started" value={this.state.date} onChange={this.handleChange} name="date"/>
+                            <br />
+                            <TextField type="date" value={this.state.date} onChange={this.handleChange} name="date"/>
                             <Button variant="contained" color="primary" type="submit" style={{marginTop: '50px'}}>Add Project</Button>
                         </form>
                     </Paper>
@@ -59,4 +61,4 @@ class MainPage extends Component {
 }
 
 
-export default connect()(MainPage);
+export default connect()(NewProjectPage);
