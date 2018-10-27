@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import './MainPage.css';
 import '../../styles/main.css';
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+    },
+    palette: {
+        primary: {
+            main: '#ad0400'
+        },
+    }
+});
 
 class MainPage extends Component {
 
@@ -18,15 +32,18 @@ class MainPage extends Component {
 
     render() {
         return (
-            <div>
-                <div className="justify-center">
-                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toNewProject}>Add a Project</Button>
-                    <br />
-                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toCurrentProjects}>Current Projects</Button>
-                    <br />
-                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toPreviousProjects}>Previous Projects</Button>
+            <MuiThemeProvider theme={theme}>
+                <div>
+                    <div className="justify-center main-page">
+                        <Button variant="contained" color="primary" style={{ margin: 5, width: '80vw', height: '10vh' }} onClick={this.toNewProject}>Add a Project</Button>
+                        <br />
+                        <Button variant="contained" color="primary" style={{ margin: 5, width: '80vw', height: '10vh' }} onClick={this.toCurrentProjects}>Current Projects</Button>
+                        <br />
+                        <Button variant="contained" color="primary" style={{ margin: 5, width: '80vw', height: '10vh' }} onClick={this.toPreviousProjects}>Previous Projects</Button>
+                    </div>
                 </div>
-            </div>
+            </MuiThemeProvider>
+          
         );
     }
 }
