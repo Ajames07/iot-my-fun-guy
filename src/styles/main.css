@@ -11,6 +11,8 @@
     justify-content: center;
 }
 
-.login-form {
-    
+.projectContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

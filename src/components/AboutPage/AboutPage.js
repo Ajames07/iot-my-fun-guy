@@ -1,4 +1,5 @@
 import React from 'react';
+import './AboutPage.css';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -7,9 +8,12 @@ import React from 'react';
 
 const AboutPage = () => (
   <div>
-    <div>
+    <div className="aboutPage">
       <p>
-        This about page is for anyone to read!
+        My Fun Guy is a low cost, do it yourself, gourmet mushroom growing tracker. Track 
+        and perfect your mushroom growing conditions using a Particle Photon with temperature, humidity,
+        and air quality sensors, and our software. View your Current Projects with up do date data 
+        or Previous Projects to compare conditions and become a mushroom master. 
       </p>
     </div>
   </div>

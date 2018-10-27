@@ -19,6 +19,7 @@ const theme = createMuiTheme({
 
 class NewProjectPage extends Component {
 
+
     constructor() {
         super();
         this.state = {
@@ -56,14 +57,14 @@ class NewProjectPage extends Component {
                 <div>
                     <div className="justify-center">
                         <Paper style={{ width: '50vh' }}>
-                            <h2 className="center-text">Add Project</h2>
+                            <h2 className="center-text">Add a Project</h2>
                             <form className="center-text" onSubmit={this.submitProject}>
                                 <TextField label="Project Name" value={this.state.name} onChange={this.handleChange} name="name" />
                                 <TextField label="Location" value={this.state.location} onChange={this.handleChange} name="location" />
                                 <br />
                                 <TextField type="date" value={this.state.date} onChange={this.handleChange} name="date" />
                                 <br />
-                                <Button variant="contained" color="primary" type="submit" style={{ margin: '15px' }}>Submit</Button>
+                                <Button variant="contained" color="primary" type="submit" style={{ margin: '25px' }}>Submit</Button>
                             </form>
                         </Paper>
                         <br />

@@ -19,7 +19,9 @@ const theme = createMuiTheme({
 
 const mapStateToProps = state => ({
     projects: state.projects.previousProjects,
-})
+});
+
+
 
 class MainPage extends Component {
 
