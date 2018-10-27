@@ -8,6 +8,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { connect } from 'react-redux';
 import moment from "moment";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Chart from 'chart.js';
 
 const theme = createMuiTheme({
     typography: {
@@ -77,7 +78,6 @@ class CurrentProjects extends Component {
     }
 
     render() {
-
         const { classes } = this.props;
 
         let singleProjectDetails = null;
@@ -157,19 +157,19 @@ class CurrentProjects extends Component {
                                         onClick={this.toggleDrawer('left', false)}
                                         onKeyDown={this.toggleDrawer('left', false)}
                                     >
-                                        <p>Close</p>   
+                                        <p>Close</p>
                                     </div>
                                     {singleProjectDetails}
                                 </SwipeableDrawer>
                             </div>
-                          
+
 
                             <br />
                             <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
                         </div>
                     </div>
                 </MuiThemeProvider>
-                
+
             );
         }
         else {
