@@ -51,6 +51,7 @@ router.post('/addNote', (req, res) => {
         console.log('ERROR adding note:', error);
         res.sendStatus(500);
     });
+});
 
 //route to get single projects details
 router.get('/details/:id', (req, res) => {
