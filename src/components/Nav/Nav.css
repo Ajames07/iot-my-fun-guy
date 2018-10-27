@@ -11,6 +11,11 @@
   background-color: #00acb0;
 }
 
+.nav-link-list{
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-link {
   float: left;
   color: #f2f2f2;
@@ -33,4 +38,10 @@
 
 .nav-right {
   float: right;
+}
+
+.nav-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
