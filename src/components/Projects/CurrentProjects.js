@@ -72,7 +72,7 @@ class CurrentProjects extends Component {
                             <div className="projectContainer">
                                 {this.props.projects.map((project, i) => {
                                     return (
-                                        <div key={i} onClick={this.toggleDrawer('left', true)}>
+                                        <div key={i} onClick={this.toggleDrawer('left', true)} name={this.props.projects.id}>
                                             <Paper style={{ width: '40vw' }} className="center-text">
                                                 <div className="center-text">
                                                     <h3 style={{ marginTop: '16px' }}>{project.project_name}</h3>

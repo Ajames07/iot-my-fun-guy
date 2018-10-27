@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import '../../styles/main.css';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import moment from 'moment';
-
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -62,7 +60,6 @@ class MainPage extends Component {
                     </div>
                 </div>
             </MuiThemeProvider>
-           
         );
     }
 }
