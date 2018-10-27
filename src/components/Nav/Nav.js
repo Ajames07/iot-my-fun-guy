@@ -16,7 +16,7 @@ const styles = {
 
 class Nav extends Component {
 
- 
+
   state = {
     right: false,
   };
