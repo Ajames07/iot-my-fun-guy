@@ -16,8 +16,8 @@ class MainPage extends Component {
                 <div className="justify-center">
 
                     <h2>Current Projects</h2>
-                    <Paper style={{ width: '40vh' }}>
-                        <Grid container>
+                    <Paper style={{ width: '50vh' }}>
+                        <Grid container spacing={40} className="projectContainer">
                             <Grid item md={6}>
                                 <h4 style={{ marginTop: '16px' }}>Project name</h4>
                                 <img alt="project" />
@@ -29,8 +29,8 @@ class MainPage extends Component {
                             </Grid>
                         </Grid>
                     </Paper>
-                    <Paper style={{ width: '40vh' }}>
-                        <Grid container>
+                    <Paper style={{ width: '50vh' }}>
+                        <Grid container spacing={40} className="projectContainer">
                             <Grid item md={6}>
                                 <h4 style={{ marginTop: '16px' }}>Project name</h4>
                                 <img alt="project" />
@@ -41,8 +41,8 @@ class MainPage extends Component {
                                 <p>Date Started</p>
                             </Grid>
                         </Grid>
-                    </Paper><Paper style={{ width: '40vh' }}>
-                        <Grid container>
+                    </Paper><Paper style={{ width: '50vh' }}>
+                        <Grid container spacing={40} className="projectContainer">
                             <Grid item md={6}>
                                 <h4 style={{ marginTop: '16px' }}>Project name</h4>
                                 <img alt="project" />
