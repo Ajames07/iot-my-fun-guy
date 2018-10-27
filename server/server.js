@@ -34,7 +34,7 @@ app.use(express.static('build'));
 app.use(express.static('build'));
 
 //device connection
-// Make a request for data every 30 minutes
+// Make a request for data every 1 minute
 cron.schedule('*/1 * * * *', function () {
   console.log('running a task every 1 minutes');
   particleData();
@@ -53,7 +53,8 @@ function particleData() {
     Values ($1,$2)`;
     pool.query(queryText, [newSensorData.temp, newSensorData.humidity])
       .then((results) => {
-      }).catch((error) => {
+      })//error handling
+      .catch((error) => {
         console.log('error making POST request', error);
       });
   })//error handling
