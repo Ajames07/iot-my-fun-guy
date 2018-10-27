@@ -88,7 +88,13 @@ class Nav extends Component {
 
     return (
       <div className="nav-btn-container">
-        <Button className="nav-button" onClick={this.toggleDrawer('right', true)}>Open Right</Button>
+        <Button className="nav-button" onClick={this.toggleDrawer('right', true)}>
+          <div className="hamburger hamburger--3dx" id="hamburger" >
+            <span className="hamburger-box">
+              <span className="hamburger-inner"></span>
+            </span>
+          </div>
+        </Button>
         <SwipeableDrawer
           anchor="right"
           open={this.state.right}
