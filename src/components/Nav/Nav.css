@@ -67,8 +67,14 @@
 .nav-btn-container{
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 0 0 0 2vw;
   background: transparent;
+  height: 60px;
+}
+
+.nav-btn-container img{
+  height: 100%
 }
 
 /*!

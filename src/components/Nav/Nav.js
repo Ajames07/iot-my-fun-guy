@@ -116,6 +116,7 @@ class Nav extends Component {
 
     return (
       <div className="nav-btn-container">
+        <img src="./images/myFunGuyLogo.svg" alt="logo"/>
         <Button className="nav-button" onClick={this.toggleDrawer('right', true)}>
           <div className="hamburger hamburger--3dx" id="hamburger" >
             <span className="hamburger-box">
