@@ -12,13 +12,19 @@ class MainPage extends Component {
         this.props.history.push('/previous');
     }
 
+    toNewProject = () => {
+        this.props.history.push('/new-project')
+    }
+
     render() {
         return (
             <div>
                 <div className="justify-center">
-                    <Button variant="contained" style={{margin: 5}} onClick={this.toCurrentProjects}>Current Projects</Button>
+                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toNewProject}>Add a Project</Button>
                     <br />
-                    <Button variant="contained" style={{margin: 5}} onClick={this.toPreviousProjects}>Previous Projects</Button>
+                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toCurrentProjects}>Current Projects</Button>
+                    <br />
+                    <Button variant="contained" style={{ margin: 5, width: '25vh' }} onClick={this.toPreviousProjects}>Previous Projects</Button>
                 </div>
             </div>
         );
