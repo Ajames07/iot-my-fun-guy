@@ -9,8 +9,8 @@ CREATE TABLE projects (
     devices_id INT REFERENCES devices,
     project_name VARCHAR (500),
     project_location VARCHAR (500),
-    date_started date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    date_ended date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_started TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_ended TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     complete BOOLEAN DEFAULT FALSE,
     notes VARCHAR (10000),
     yield VARCHAR (6)
@@ -24,7 +24,6 @@ CREATE TABLE devices (
     id SERIAL PRIMARY KEY,
     particle_id VARCHAR (10),
     token VARCHAR (10),
-    location VARCHAR (100)
 );
 CREATE TABLE readings (
     id SERIAL PRIMARY KEY,
