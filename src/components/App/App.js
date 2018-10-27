@@ -17,7 +17,8 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import MainPage from '../MainPage/MainPage';
 import CurrentProjects from '../Projects/CurrentProjects';
-import PreviousProjects from '../Projects/PreviosProjects';
+import PreviousProjects from '../Projects/PreviousProjects';
+import NewProject from '../Projects/NewProject';
 
 import './App.css';
 
@@ -66,6 +67,11 @@ class App extends Component {
               exact
               path="/current"
               component={CurrentProjects}
+            />
+            <ProtectedRoute
+              exact
+              path="/new-project"
+              component={NewProject}
             />
             <ProtectedRoute
               exact

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import '../../styles/main.css';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 class MainPage extends Component {
 
@@ -15,7 +15,7 @@ class MainPage extends Component {
             <div>
                 <div className="justify-center">
 
-                    <h2>Current Projects</h2>
+                    <h2>Previous Projects</h2>
                     <Paper style={{ width: '40vh' }}>
                         <Grid container>
                             <Grid item md={6}>
