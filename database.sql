@@ -7,7 +7,10 @@ CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     person_id INT REFERENCES person,
     devices_id INT REFERENCES devices,
-    project_name VARCHAR (100),
+    project_name VARCHAR (500),
+    project_location VARCHAR (500),
+    date_started date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_ended date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     complete BOOLEAN DEFAULT FALSE,
     notes VARCHAR (10000),
     yield VARCHAR (6)
