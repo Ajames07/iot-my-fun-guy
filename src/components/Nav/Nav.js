@@ -3,34 +3,20 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants';
-
-
 
 const styles = {
   list: {
-    width: 250,
-    background: 'transparent',
-  },
-  fullList: {
-    width: 'auto',
+    width: 100,
   },
 };
 
 class Nav extends Component {
 
-  constructor(props){
-    super(props);
-  }
-
+ 
   state = {
     right: false,
   };
@@ -45,7 +31,7 @@ class Nav extends Component {
     const { classes } = this.props;
     
     const sideList = (
-      <div className="nav-link-list" style={{background: 'transparent'}}>
+      <div className={classes.list} style={{background: 'transparent'}}>
         <div class="nav-close">
           <p>CLOSE</p>
         </div>
@@ -91,6 +77,7 @@ class Nav extends Component {
 
     return (
       <div className="nav-btn-container">
+        <img src="./images/myFunGuyLogo.svg" alt="logo"/>
         <Button className="nav-button" onClick={this.toggleDrawer('right', true)}>
           <div className="hamburger hamburger--3dx" id="hamburger" >
             <span className="hamburger-box">
@@ -122,4 +109,10 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+Nav.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+const styledNav = withStyles(styles)(Nav);
+
+export default connect(mapStateToProps)(styledNav);
