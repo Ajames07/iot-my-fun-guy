@@ -1,6 +1,7 @@
 const cron = require('node-cron');
 const axios = require('axios');
 const express = require('express');
+const pool = require('./modules/pool');
 require('dotenv').config();
 
 const app = express();
@@ -12,6 +13,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const sensorDataForm = require('./routes/sensor.router');
+const projectRouter = require('./routes/project.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +29,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/sensor', sensorDataForm);
+app.use('/api/project', projectRouter);
 // Serve static files
 app.use(express.static('build'));
 

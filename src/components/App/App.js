@@ -19,6 +19,7 @@ import MainPage from '../MainPage/MainPage';
 import CurrentProjects from '../Projects/CurrentProjects';
 import PreviousProjects from '../Projects/PreviousProjects';
 import NewProject from '../Projects/NewProject';
+import ProjectSensorPage from '../ProjectSensorPage/ProjectSensorPage';
 
 import './App.css';
 
@@ -77,6 +78,11 @@ class App extends Component {
               exact
               path="/previous"
               component={PreviousProjects}
+            />
+            <ProtectedRoute
+              exact
+              path="/project/:id"
+              component={ProjectSensorPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
