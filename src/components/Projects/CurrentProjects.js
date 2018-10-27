@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { connect } from 'react-redux';
 import moment from "moment";
-
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -21,12 +20,12 @@ const theme = createMuiTheme({
     }
 });
 
+
 const styles = {
     projectDetails: {
         width: '100vw',
     },
 };
-
 
 
 const mapStateToProps = state => ({
@@ -127,6 +126,7 @@ class CurrentProjects extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div>
                         <div className="justify-center">
+
                             <h2>Current Projects</h2>
                             <div className="projectContainer">
                                 {this.props.projects.map((project, i) => {
