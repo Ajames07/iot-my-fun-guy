@@ -20,12 +20,28 @@ import PreviousProjects from '../Projects/PreviousProjects';
 import NewProject from '../Projects/NewProject';
 import ProjectSensorPage from '../ProjectSensorPage/ProjectSensorPage';
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
 import './App.css';
+
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette: {
+    primary: {
+      main: '#ad0400'
+    },
+  }
+});
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
+
+  
 
   render() {
     return (
