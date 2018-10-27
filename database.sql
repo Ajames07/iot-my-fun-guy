@@ -7,6 +7,7 @@ CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     person_id INT REFERENCES person,
     devices_id INT REFERENCES devices,
+    project_name VARCHAR (100),
     complete BOOLEAN DEFAULT FALSE,
     notes VARCHAR (10000),
     yield VARCHAR (6)
