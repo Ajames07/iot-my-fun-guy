@@ -13,12 +13,10 @@ class MainPage extends Component {
         return (
             <div>
                 <div className="justify-center">
-                    <Paper>
-                        <div>
-                    <div>Current Projects</div>
-                        </div>
+                    <Paper style={{width: '30vh'}}>
+                            <div>Current Projects</div>
                     </Paper>
-                    <br /> 
+                    <br />
                     <Button variant="contained" color="primary" onClick={this.toMainPage}>Back</Button>
                 </div>
             </div>
