@@ -52,9 +52,9 @@ function particleData() {
     const newSensorData = JSON.parse(response.data.result);
     console.log(newSensorData);
     // INSERT INTO using a pg pool
-    const queryText = `INSERT INTO readings ("projects_id",temperature","humidity","voc")
+    const queryText = `INSERT INTO "readings" ("projects_id","temperature","humidity","voc")
     Values ($1,$2,$3,$4)`;
-    pool.query(queryText, [newSensorData.projects_id,newSensorData.temp, newSensorData.humidity, newSensorData.voc])
+    pool.query(queryText, [newSensorData.projects_id,newSensorData.temperature, newSensorData.humidity, newSensorData.voc])
       .then((results) => {
       })//error handling
       .catch((error) => {
