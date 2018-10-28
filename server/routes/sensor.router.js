@@ -25,13 +25,13 @@ router.get('/:id', ( req , res ) => {
     });//end error handling
 });//end router GET
 
-// manulally entered readings data POST to server
+//manulally entered readings data POST to server
 router.post('/', ( req , res ) => {
     console.log(req.body);
     const newSensorData = req.body;
-    const queryText =`INSERT INTO readings ("temperature","humidity","voc")
-                        Values ($1,$2)`;
-    pool.query(queryText, [newSensorData.temperature,newSensorData.humidity,newSensorData.voc])
+    const queryText =`INSERT INTO readings ("projects_id","temperature","humidity","voc")
+                        Values ($1,$2,$3,$4);`;
+    pool.query(queryText, [newSensorData.projects_id,newSensorData.temp,newSensorData.humidity,newSensorData.co2])
     .then((results) => {
        res.sendStatus(200);
     })//error handling
@@ -48,7 +48,7 @@ router.put('/:id', ( req , res ) => {
     SET "temperature" = $1,
     "humidity" = $2,
     "voc" = $3
-    WHERE id = $3;`;
+    WHERE id = $4;`;
 
     const queryValues = [
         updatedSensorData.temperature,
