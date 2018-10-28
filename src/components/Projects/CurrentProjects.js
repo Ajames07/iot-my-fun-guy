@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import moment from "moment";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Chart from 'chart.js';
+import NotesPage from '../NotesPage/NotesPage';
 
 const theme = createMuiTheme({
     typography: {
@@ -108,10 +109,7 @@ class CurrentProjects extends Component {
                                 <p>Close</p>
                             </div>
                             <div className={classes.projectDetails}>
-                                <h2>Notes</h2>
-                                <div className="notesContainer">
-
-                                </div>
+                                <NotesPage/>
                             </div>
 
                         </SwipeableDrawer>
