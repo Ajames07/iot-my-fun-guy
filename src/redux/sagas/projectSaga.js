@@ -34,7 +34,9 @@ function* getProjectDetails(action) {
 
     try{
         const singleProjectDetails = yield call(axios.get, 'api/project/details/' + projectId);
+        const singleProjectNotes = yield call(axios.get, 'api/project/notes/' + projectId);
         yield put({type: 'SET_PROJECT_DETAILS', payload: singleProjectDetails.data});
+        yield put({type: 'SET_PROJECT_NOTES', payload: singleProjectNotes.data});
     }
     catch (error) {
         console.log('ERROR', error);

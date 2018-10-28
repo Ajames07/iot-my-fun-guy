@@ -10,6 +10,16 @@ const singleProject = (state = [], action) => {
     }
 } 
 
+const projectNotes = (state = [], action) => {
+    switch(action.type) {
+        case 'SET_PROJECT_NOTES':
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
 export default combineReducers({
     singleProject,
+    projectNotes,
 });

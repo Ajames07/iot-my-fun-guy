@@ -44,6 +44,7 @@ router.post('/add', (req, res) => {
 });
 
 router.post('/addNote', (req, res) => {
+    console.log('note to add', req.body);
     const query = `INSERT INTO "notes" ("projects_id", "note") VALUES ($1, $2);`;
     pool.query(query, [req.body.project_id, req.body.note]).then(() => {
         res.sendStatus(201);
