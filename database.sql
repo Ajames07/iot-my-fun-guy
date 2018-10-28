@@ -30,3 +30,10 @@ CREATE TABLE readings (
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE notes (
+    id SERIAL PRIMARY KEY,
+    projects_id INT REFERENCES projects(id),
+    note VARCHAR(10000),
+    note_date TIMESTAMP DEFAULT NOW()
+);
+

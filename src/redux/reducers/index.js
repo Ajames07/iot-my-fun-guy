@@ -3,8 +3,8 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import projects from './projectsReducer';
-import sensorDataList from './sensorReducer'
-
+import sensorDataList from './sensorReducer';
+import projectDetails from './projectDetailReducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   projects,
   sensorDataList,
+  projectDetails,
 });
 
 export default rootReducer;

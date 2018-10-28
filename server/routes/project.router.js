@@ -20,6 +20,16 @@ router.get('/previous', (req, res) => {
         console.log('ERROR getting current projects:', error);
         res.sendStatus(500);
     });
+});
+
+router.get('/notes/:id', (req, res) => {
+    const query = `SELECT * FROM "notes" WHERE "projects_id" = $1;`;
+    pool.query(query, [req.params.id]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('ERROR getting notes: ', error);
+        res.sendStatus(500);
+    })
 })
 
 router.post('/add', (req, res) => {
@@ -31,6 +41,33 @@ router.post('/add', (req, res) => {
         console.log('ERROR adding project:', error);
         res.sendStatus(500);
     });
+});
+
+router.post('/addNote', (req, res) => {
+    const query = `INSERT INTO "notes" ("projects_id", "note") VALUES ($1, $2);`;
+    pool.query(query, [req.body.project_id, req.body.note]).then(() => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('ERROR adding note:', error);
+        res.sendStatus(500);
+    });
+});
+
+//route to get single projects details
+router.get('/details/:id', (req, res) => {
+    const projectId = parseInt(req.params.id);
+    
+    console.log('projectId', projectId);
+    
+    const query = `SELECT * FROM projects WHERE "id" = $1;`;
+
+    pool.query(query, [projectId])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error getting project details', error);
+            res.sendStatus(500);
+        });
 });
 
 module.exports = router;

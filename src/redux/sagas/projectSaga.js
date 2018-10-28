@@ -26,10 +26,27 @@ function* getPreviousProjects() {
     }  
 }
 
+//function to get single projects details to display on drawer
+function* getProjectDetails(action) {
+
+    const projectId = action.payload;
+    console.log('in getProjectDetails', projectId);
+
+    try{
+        const singleProjectDetails = yield call(axios.get, 'api/project/details/' + projectId);
+        yield put({type: 'SET_PROJECT_DETAILS', payload: singleProjectDetails.data});
+    }
+    catch (error) {
+        console.log('ERROR', error);
+        alert('There was an error getting the project');
+    }
+}//end getProjectDetails
+
 function* projectSaga() {
     yield takeLatest('ADD_PROJECT', addProject);
     yield takeLatest('GET_ALL_CURRENT_PROJECTS', getCurrentProjects);
     yield takeLatest('GET_ALL_PREVIOUS_PROJECTS', getPreviousProjects);
+    yield takeLatest('GET_PROJECT_DETAILS', getProjectDetails);
 }
 
 export default projectSaga;
